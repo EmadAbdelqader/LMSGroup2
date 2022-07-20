@@ -23,6 +23,14 @@ namespace LMSGroup2.BAL
 
         #endregion
 
+        #region Public Properties
+
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string lastName { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -32,6 +40,7 @@ namespace LMSGroup2.BAL
         {
             // datacontext initialization
             dc = new LMDbContext();
+
         }
 
         #endregion
@@ -48,6 +57,22 @@ namespace LMSGroup2.BAL
             return dc.Users.ToList();
         }
 
+        public List<User> GetUsersBySearch()
+        {
+            // SELECT * FROM USERS WHERE
+            var Query = (
+                from u in dc.Users
+                where
+                (UserId == -1 || u.UserId == UserId) &&
+                (FirstName == String.Empty || u.FirstName.Contains(FirstName)) &&
+                (lastName == String.Empty || u.LastName.Contains(lastName))
+                select u
+                );
+
+            var result = Query.ToList();
+            return result;
+        }
+
         /// <summary>
         /// Get the user with a specific userId
         /// </summary>
@@ -62,7 +87,7 @@ namespace LMSGroup2.BAL
         public User GetUserByUsername(string username)
         {
             //string query = "SELECT *";
-            return dc.Users.SingleOrDefault(u => u.UserName == username);
+            return dc.Users.SingleOrDefault(u => u.Username == username);
         }
 
         public List<UserFullNamesView> GetUserFullNames()
@@ -109,8 +134,6 @@ namespace LMSGroup2.BAL
 
             newUser.FirstName = _user.FirstName;
             newUser.LastName = _user.LastName;
-            newUser.MIddleName = _user.MIddleName;
-            newUser.UserName = _user.UserName;
 
             if (insert)
             {

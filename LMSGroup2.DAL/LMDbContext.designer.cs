@@ -30,12 +30,12 @@ namespace LMSGroup2.DAL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertEvent(Event instance);
     partial void UpdateEvent(Event instance);
     partial void DeleteEvent(Event instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     partial void InsertLeaveApplication(LeaveApplication instance);
     partial void UpdateLeaveApplication(LeaveApplication instance);
     partial void DeleteLeaveApplication(LeaveApplication instance);
@@ -77,19 +77,19 @@ namespace LMSGroup2.DAL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Event> Events
 		{
 			get
 			{
 				return this.GetTable<Event>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 		
@@ -114,6 +114,404 @@ namespace LMSGroup2.DAL
 			get
 			{
 				return this.GetTable<LookUpType>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Events")]
+	public partial class Event : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _EventId;
+		
+		private System.Nullable<int> _OwnerId;
+		
+		private string _Title;
+		
+		private string _Notes;
+		
+		private System.Nullable<int> _Status;
+		
+		private System.Nullable<int> _Priority;
+		
+		private System.Nullable<int> _AssignedTo;
+		
+		private System.Nullable<int> _Module;
+		
+		private System.Nullable<int> _Type;
+		
+		private System.Nullable<System.DateTime> _FollowUpDate;
+		
+		private string _FollowUpTime;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<int> _CreatedBy;
+		
+		private System.Nullable<System.DateTime> _UpdatedOn;
+		
+		private System.Nullable<int> _UpdatedBy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEventIdChanging(int value);
+    partial void OnEventIdChanged();
+    partial void OnOwnerIdChanging(System.Nullable<int> value);
+    partial void OnOwnerIdChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    partial void OnStatusChanging(System.Nullable<int> value);
+    partial void OnStatusChanged();
+    partial void OnPriorityChanging(System.Nullable<int> value);
+    partial void OnPriorityChanged();
+    partial void OnAssignedToChanging(System.Nullable<int> value);
+    partial void OnAssignedToChanged();
+    partial void OnModuleChanging(System.Nullable<int> value);
+    partial void OnModuleChanged();
+    partial void OnTypeChanging(System.Nullable<int> value);
+    partial void OnTypeChanged();
+    partial void OnFollowUpDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnFollowUpDateChanged();
+    partial void OnFollowUpTimeChanging(string value);
+    partial void OnFollowUpTimeChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnCreatedByChanging(System.Nullable<int> value);
+    partial void OnCreatedByChanged();
+    partial void OnUpdatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnUpdatedOnChanged();
+    partial void OnUpdatedByChanging(System.Nullable<int> value);
+    partial void OnUpdatedByChanged();
+    #endregion
+		
+		public Event()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int EventId
+		{
+			get
+			{
+				return this._EventId;
+			}
+			set
+			{
+				if ((this._EventId != value))
+				{
+					this.OnEventIdChanging(value);
+					this.SendPropertyChanging();
+					this._EventId = value;
+					this.SendPropertyChanged("EventId");
+					this.OnEventIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerId", DbType="Int")]
+		public System.Nullable<int> OwnerId
+		{
+			get
+			{
+				return this._OwnerId;
+			}
+			set
+			{
+				if ((this._OwnerId != value))
+				{
+					this.OnOwnerIdChanging(value);
+					this.SendPropertyChanging();
+					this._OwnerId = value;
+					this.SendPropertyChanged("OwnerId");
+					this.OnOwnerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(40)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int")]
+		public System.Nullable<int> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Priority", DbType="Int")]
+		public System.Nullable<int> Priority
+		{
+			get
+			{
+				return this._Priority;
+			}
+			set
+			{
+				if ((this._Priority != value))
+				{
+					this.OnPriorityChanging(value);
+					this.SendPropertyChanging();
+					this._Priority = value;
+					this.SendPropertyChanged("Priority");
+					this.OnPriorityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssignedTo", DbType="Int")]
+		public System.Nullable<int> AssignedTo
+		{
+			get
+			{
+				return this._AssignedTo;
+			}
+			set
+			{
+				if ((this._AssignedTo != value))
+				{
+					this.OnAssignedToChanging(value);
+					this.SendPropertyChanging();
+					this._AssignedTo = value;
+					this.SendPropertyChanged("AssignedTo");
+					this.OnAssignedToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Module", DbType="Int")]
+		public System.Nullable<int> Module
+		{
+			get
+			{
+				return this._Module;
+			}
+			set
+			{
+				if ((this._Module != value))
+				{
+					this.OnModuleChanging(value);
+					this.SendPropertyChanging();
+					this._Module = value;
+					this.SendPropertyChanged("Module");
+					this.OnModuleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowUpDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FollowUpDate
+		{
+			get
+			{
+				return this._FollowUpDate;
+			}
+			set
+			{
+				if ((this._FollowUpDate != value))
+				{
+					this.OnFollowUpDateChanging(value);
+					this.SendPropertyChanging();
+					this._FollowUpDate = value;
+					this.SendPropertyChanged("FollowUpDate");
+					this.OnFollowUpDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowUpTime", DbType="NVarChar(40)")]
+		public string FollowUpTime
+		{
+			get
+			{
+				return this._FollowUpTime;
+			}
+			set
+			{
+				if ((this._FollowUpTime != value))
+				{
+					this.OnFollowUpTimeChanging(value);
+					this.SendPropertyChanging();
+					this._FollowUpTime = value;
+					this.SendPropertyChanged("FollowUpTime");
+					this.OnFollowUpTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="Int")]
+		public System.Nullable<int> CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdatedOn
+		{
+			get
+			{
+				return this._UpdatedOn;
+			}
+			set
+			{
+				if ((this._UpdatedOn != value))
+				{
+					this.OnUpdatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._UpdatedOn = value;
+					this.SendPropertyChanged("UpdatedOn");
+					this.OnUpdatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedBy", DbType="Int")]
+		public System.Nullable<int> UpdatedBy
+		{
+			get
+			{
+				return this._UpdatedBy;
+			}
+			set
+			{
+				if ((this._UpdatedBy != value))
+				{
+					this.OnUpdatedByChanging(value);
+					this.SendPropertyChanging();
+					this._UpdatedBy = value;
+					this.SendPropertyChanged("UpdatedBy");
+					this.OnUpdatedByChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -565,404 +963,6 @@ namespace LMSGroup2.DAL
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Events")]
-	public partial class Event : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _EventId;
-		
-		private System.Nullable<int> _OwnerId;
-		
-		private string _Title;
-		
-		private string _Notes;
-		
-		private System.Nullable<int> _Status;
-		
-		private System.Nullable<int> _Priority;
-		
-		private System.Nullable<int> _AssignedTo;
-		
-		private System.Nullable<int> _Module;
-		
-		private System.Nullable<int> _Type;
-		
-		private System.Nullable<System.DateTime> _FollowUpDate;
-		
-		private string _FollowUpTime;
-		
-		private System.Nullable<System.DateTime> _CreatedOn;
-		
-		private System.Nullable<int> _CreatedBy;
-		
-		private System.Nullable<System.DateTime> _UpdatedOn;
-		
-		private System.Nullable<int> _UpdatedBy;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEventIdChanging(int value);
-    partial void OnEventIdChanged();
-    partial void OnOwnerIdChanging(System.Nullable<int> value);
-    partial void OnOwnerIdChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    partial void OnNotesChanging(string value);
-    partial void OnNotesChanged();
-    partial void OnStatusChanging(System.Nullable<int> value);
-    partial void OnStatusChanged();
-    partial void OnPriorityChanging(System.Nullable<int> value);
-    partial void OnPriorityChanged();
-    partial void OnAssignedToChanging(System.Nullable<int> value);
-    partial void OnAssignedToChanged();
-    partial void OnModuleChanging(System.Nullable<int> value);
-    partial void OnModuleChanged();
-    partial void OnTypeChanging(System.Nullable<int> value);
-    partial void OnTypeChanged();
-    partial void OnFollowUpDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnFollowUpDateChanged();
-    partial void OnFollowUpTimeChanging(string value);
-    partial void OnFollowUpTimeChanged();
-    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedOnChanged();
-    partial void OnCreatedByChanging(System.Nullable<int> value);
-    partial void OnCreatedByChanged();
-    partial void OnUpdatedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnUpdatedOnChanged();
-    partial void OnUpdatedByChanging(System.Nullable<int> value);
-    partial void OnUpdatedByChanged();
-    #endregion
-		
-		public Event()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int EventId
-		{
-			get
-			{
-				return this._EventId;
-			}
-			set
-			{
-				if ((this._EventId != value))
-				{
-					this.OnEventIdChanging(value);
-					this.SendPropertyChanging();
-					this._EventId = value;
-					this.SendPropertyChanged("EventId");
-					this.OnEventIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerId", DbType="Int")]
-		public System.Nullable<int> OwnerId
-		{
-			get
-			{
-				return this._OwnerId;
-			}
-			set
-			{
-				if ((this._OwnerId != value))
-				{
-					this.OnOwnerIdChanging(value);
-					this.SendPropertyChanging();
-					this._OwnerId = value;
-					this.SendPropertyChanged("OwnerId");
-					this.OnOwnerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(40)")]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				if ((this._Notes != value))
-				{
-					this.OnNotesChanging(value);
-					this.SendPropertyChanging();
-					this._Notes = value;
-					this.SendPropertyChanged("Notes");
-					this.OnNotesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int")]
-		public System.Nullable<int> Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Priority", DbType="Int")]
-		public System.Nullable<int> Priority
-		{
-			get
-			{
-				return this._Priority;
-			}
-			set
-			{
-				if ((this._Priority != value))
-				{
-					this.OnPriorityChanging(value);
-					this.SendPropertyChanging();
-					this._Priority = value;
-					this.SendPropertyChanged("Priority");
-					this.OnPriorityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssignedTo", DbType="Int")]
-		public System.Nullable<int> AssignedTo
-		{
-			get
-			{
-				return this._AssignedTo;
-			}
-			set
-			{
-				if ((this._AssignedTo != value))
-				{
-					this.OnAssignedToChanging(value);
-					this.SendPropertyChanging();
-					this._AssignedTo = value;
-					this.SendPropertyChanged("AssignedTo");
-					this.OnAssignedToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Module", DbType="Int")]
-		public System.Nullable<int> Module
-		{
-			get
-			{
-				return this._Module;
-			}
-			set
-			{
-				if ((this._Module != value))
-				{
-					this.OnModuleChanging(value);
-					this.SendPropertyChanging();
-					this._Module = value;
-					this.SendPropertyChanged("Module");
-					this.OnModuleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
-		public System.Nullable<int> Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowUpDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FollowUpDate
-		{
-			get
-			{
-				return this._FollowUpDate;
-			}
-			set
-			{
-				if ((this._FollowUpDate != value))
-				{
-					this.OnFollowUpDateChanging(value);
-					this.SendPropertyChanging();
-					this._FollowUpDate = value;
-					this.SendPropertyChanged("FollowUpDate");
-					this.OnFollowUpDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowUpTime", DbType="NVarChar(40)")]
-		public string FollowUpTime
-		{
-			get
-			{
-				return this._FollowUpTime;
-			}
-			set
-			{
-				if ((this._FollowUpTime != value))
-				{
-					this.OnFollowUpTimeChanging(value);
-					this.SendPropertyChanging();
-					this._FollowUpTime = value;
-					this.SendPropertyChanged("FollowUpTime");
-					this.OnFollowUpTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedOn
-		{
-			get
-			{
-				return this._CreatedOn;
-			}
-			set
-			{
-				if ((this._CreatedOn != value))
-				{
-					this.OnCreatedOnChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedOn = value;
-					this.SendPropertyChanged("CreatedOn");
-					this.OnCreatedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="Int")]
-		public System.Nullable<int> CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdatedOn
-		{
-			get
-			{
-				return this._UpdatedOn;
-			}
-			set
-			{
-				if ((this._UpdatedOn != value))
-				{
-					this.OnUpdatedOnChanging(value);
-					this.SendPropertyChanging();
-					this._UpdatedOn = value;
-					this.SendPropertyChanged("UpdatedOn");
-					this.OnUpdatedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedBy", DbType="Int")]
-		public System.Nullable<int> UpdatedBy
-		{
-			get
-			{
-				return this._UpdatedBy;
-			}
-			set
-			{
-				if ((this._UpdatedBy != value))
-				{
-					this.OnUpdatedByChanging(value);
-					this.SendPropertyChanging();
-					this._UpdatedBy = value;
-					this.SendPropertyChanged("UpdatedBy");
-					this.OnUpdatedByChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	

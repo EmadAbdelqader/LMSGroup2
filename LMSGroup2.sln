@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMSGroup2.BAL", "LMSGroup2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMSGroup2.TestingOperations", "LMSGroup2.TestingOperations\LMSGroup2.TestingOperations.csproj", "{5DC618AA-9D0E-442E-9497-C2BFA1D4ABAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMSGroup2.Web", "LMSGroup2.Web\LMSGroup2.Web.csproj", "{657E9881-34BB-44EA-A2F2-3124DC766D2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5DC618AA-9D0E-442E-9497-C2BFA1D4ABAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DC618AA-9D0E-442E-9497-C2BFA1D4ABAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DC618AA-9D0E-442E-9497-C2BFA1D4ABAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{657E9881-34BB-44EA-A2F2-3124DC766D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657E9881-34BB-44EA-A2F2-3124DC766D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657E9881-34BB-44EA-A2F2-3124DC766D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657E9881-34BB-44EA-A2F2-3124DC766D2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
