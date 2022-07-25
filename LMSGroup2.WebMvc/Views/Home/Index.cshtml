@@ -1,0 +1,35 @@
+﻿@using LMSGroup2.DAL;
+@model List<User>
+    @{
+        ViewBag.Title = "Home Page";
+    }
+
+    <div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+
+    <table class="table table-condensed table-striped"">
+        <thead>
+            <th>User Id</th>
+            <th>First name</th>
+            <th>Last Name</th>
+            <th>Created On</th>
+            <th>Actions</th>
+        </thead>
+        @foreach (var user in Model)
+        {
+
+            <tr>
+                <td>@Html.DisplayFor(u => user.UserId)</td>
+                <td>@Html.DisplayFor(u => user.FirstName)</td>
+                <td>@Html.DisplayFor(u => user.LastName)</td>
+                <td>@Html.DisplayFor(u => user.CreatedOn)</td>
+                <td>
+                    @Html.ActionLink("View User", "Edit", new { Id = user.UserId })
+                </td>
+            </tr>
+        }
+    </table>
+    

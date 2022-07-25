@@ -1674,7 +1674,7 @@ namespace LMSGroup2.DAL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
+    }
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LookUpTypes")]
 	public partial class LookUpType : INotifyPropertyChanging, INotifyPropertyChanged

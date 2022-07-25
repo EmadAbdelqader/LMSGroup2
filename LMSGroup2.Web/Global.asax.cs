@@ -23,7 +23,9 @@ namespace LMSGroup2.Web
         {
             RouteTable.Routes.Add("UserDetails", new Route("Users/{mode}/{Id}", new PageRouteHandler("~/Users/UserDetails.aspx")));
             RouteTable.Routes.Add("LeaveDetails", new Route("LeaveApplications/{mode}/{Id}", new PageRouteHandler("~/LeaveApplications/LeaveDetails.aspx")));
-
+            RouteTable.Routes.Add("LookupTypeDetails", new Route("LookupTypes/{mode}/{Id}", new PageRouteHandler("~/Lookups/LookupTypeDetails.aspx")));
+            
+            RouteTable.Routes.Add("LookupDetails", new Route("Lookups/{mode}/{TypeId}/{Id}", new PageRouteHandler("~/Lookups/LookupDetails.aspx")));
         }
     }
 }

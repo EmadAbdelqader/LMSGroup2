@@ -33,7 +33,7 @@
     <!-- Actions -->
     <div class="row text-center">
         <div class="col-md-12">
-            <asp:Button runat="server" ID="btSearch" Text="Search" CssClass="btn btn-primary" />
+            <asp:Button runat="server" ID="btSearch" Text="Search" CssClass="btn btn-primary" OnClick="btSearch_Click" />
         </div>
     </div>
 
@@ -43,50 +43,62 @@
         </div>
     </div>
 
-    
 
-    <!-- Users List -->
-    <asp:ListView ID="lvUsers" runat="server" DataKeyNames="UserId">
+<%--    <asp:UpdatePanel runat="server" ID="upUsers">
+        <ContentTemplate>--%>
+            <!-- Users List -->
+            <asp:ListView ID="lvUsers" runat="server" DataKeyNames="UserId" OnItemCommand="lvUsers_ItemCommand" OnItemDeleting="lvUsers_ItemDeleting">
 
-        <LayoutTemplate>
-            <table class="table table-condensed table-striped">
-                <thead>
-                    <th>User Id</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>User Level</th>
-                    <th>Actions</th>
-                </thead>
-                <tbody>
-                    <tr id="itemPlaceHolder" runat="server"></tr>
-                </tbody>
-            </table>
-        </LayoutTemplate>
-        <ItemTemplate>
-            <tr>
-                <td><asp:Label runat="server" ID="lblUserID" Text='<%# Bind("UserId") %>' /></td>
-                <td><%# Eval("FirstName") %></td>
-                <td><%# Eval("MiddleName") %></td>
-                <td><%# Eval("LastName") %></td>
-                <td><%# Eval("Email") %></td>
-                <td><%# Eval("Username") %></td>
-                <td><%# Eval("UserLevel") %></td>
-                <td>
-                    <asp:DynamicHyperLink runat="server" Text="View" CssClass="btn btn-info" NavigateUrl='<%# GetRouteUrl("UserDetails", new { mode = "View" , Id = Eval("UserId") }) %>' />
-                </td>
-            </tr>
-        </ItemTemplate>
-        <EmptyDataTemplate>
-            <table>
-                <tr>
-                    <td>No users available.</td>
-                </tr>
-            </table>
-        </EmptyDataTemplate>
+                <LayoutTemplate>
+                    <table class="table table-condensed table-striped">
+                        <thead>
+                            <th>User Id</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>User Level</th>
+                            <th>Created On</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            <tr id="itemPlaceHolder" runat="server"></tr>
+                        </tbody>
+                    </table>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="lblUserID" Text='<%# Bind("UserId") %>' /></td>
+                        <td><%# Eval("FirstName") %></td>
+                        <td><%# Eval("MiddleName") %></td>
+                        <td><%# Eval("LastName") %></td>
+                        <td><%# Eval("Email") %></td>
+                        <td><%# Eval("Username") %></td>
+                        <td><%# Eval("UserLevel") %></td>
+                        <td><%# Eval("CreatedOn") %></td>
+                        <td>
+                            <asp:DynamicHyperLink runat="server" Text="View" CssClass="btn btn-info" NavigateUrl='<%# GetRouteUrl("UserDetails", new { mode = "View" , Id = Eval("UserId") }) %>' />
+                            <asp:LinkButton runat="server" Text="View" CssClass="btn btn-danger" CommandName="View" CommandArgument='<%# Eval("UserId") %>' />
+                            <asp:LinkButton ID="btDelete" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="Delete" CommandArgument='<%# Eval("UserId") %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <EmptyDataTemplate>
+                    <table class="table table-condensed table-striped">
+                        <tr>
+                            <td>No users available.</td>
+                        </tr>
+                    </table>
+                </EmptyDataTemplate>
 
-    </asp:ListView>
+            </asp:ListView>
+<%--        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btSearch" EventName="Click" />
+        </Triggers>
+    </asp:UpdatePanel>--%>
+
 
 </asp:Content>

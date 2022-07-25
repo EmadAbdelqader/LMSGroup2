@@ -24,16 +24,38 @@ namespace LMSGroup2.Web.Users
 
         private void FillData()
         {
-            UsersBO usersBo = new UsersBO();
-            User user = usersBo.GetUserById(Convert.ToInt32(Page.RouteData.Values["Id"]));
-
-            if (Page.RouteData.Values["mode"].ToString() == "View")
+            try
             {
-                lblUserId.Text = user.UserId.ToString();
-                txtFirstName.Text = user.FirstName;
-                txtLastName.Text = user.LastName;
+                string Mode = Page.RouteData.Values["mode"] as string;
+                int UserId = Convert.ToInt32(Page.RouteData.Values["Id"]);
 
-                BindLeaveApps();
+                UsersBO usersBo = new UsersBO();
+                User user = new User();
+
+                if (Mode == "View")
+                {
+                    user = usersBo.GetUserById(Convert.ToInt32(Page.RouteData.Values["Id"]));
+                    lblUserId.Text = user.UserId.ToString();
+                    txtFirstName.Text = user.FirstName;
+                    txtLastName.Text = user.LastName;
+
+                    BindLeaveApps();
+
+                    // Modifications
+                    btSave.Text = "Update";
+
+                    // To be implemented
+                    //BindEvents();
+                    //Bind...
+                }
+                else if (Mode == "New")
+                {
+                    btSave.Text = "Add";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -48,8 +70,7 @@ namespace LMSGroup2.Web.Users
 
         protected void btSave_Click(object sender, EventArgs e)
         {
-            if (Save())
-                Response.Redirect("~/Users/UsersList.aspx");
+            Save();
         }
 
         private bool Save()
@@ -59,11 +80,21 @@ namespace LMSGroup2.Web.Users
                 UsersBO usersBO = new UsersBO();
                 User user = new User();
 
-                user.UserId = Convert.ToInt32(lblUserId.Text);
+                string Mode = Page.RouteData.Values["mode"] as string;
+                int UserId = Convert.ToInt32(Page.RouteData.Values["Id"]);
+
+                user.UserId = UserId;
                 user.FirstName = txtFirstName.Text;
                 user.LastName = txtLastName.Text;
 
-                usersBO.Save(user);
+                UserId = usersBO.Save(user);
+
+                if (Mode == "New")
+                    Response.RedirectToRoute("UserDetails", new { mode = "View", Id = UserId });
+                else
+                    FillData();
+
+
             }
             catch (Exception)
             {

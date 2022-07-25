@@ -10,7 +10,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="lblUserId">User Id</label>
-                <asp:label runat="server" ID="lblUserId" CssClass="form-control" />
+                <asp:TextBox ReadOnly="true" runat="server" ID="lblUserId" CssClass="form-control" />
             </div>
         </div>
         <div class="col-md-4">

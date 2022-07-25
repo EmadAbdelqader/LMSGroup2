@@ -69,7 +69,7 @@ namespace LMSGroup2.BAL
                 select u
                 );
 
-            var result = Query.ToList();
+            var result = Query.OrderByDescending(c=>c.CreatedOn).ToList();
             return result;
         }
 
@@ -134,6 +134,7 @@ namespace LMSGroup2.BAL
 
             newUser.FirstName = _user.FirstName;
             newUser.LastName = _user.LastName;
+            newUser.Username = _user.FirstName + _user.LastName;
 
             if (insert)
             {
@@ -153,6 +154,13 @@ namespace LMSGroup2.BAL
         public void Delete(int userId) // 3
         {
             User delUser = dc.Users.Where(u => u.UserId == userId).FirstOrDefault();
+
+            var leavesForUser = dc.LeaveApplications.Where(u => u.UserId == userId).ToList();
+
+            if (leavesForUser != null)
+            {
+                dc.LeaveApplications.DeleteAllOnSubmit(leavesForUser);
+            }
 
             if (delUser == null) return;
 
